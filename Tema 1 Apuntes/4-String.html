@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    <script>
+        var x = "hola1"; //En el string se asignan valores entre comillas dobles ("")
+        var y = 'hola2'; //O entre comillas simples ('')
+        var z = `hola3`; //También valen las comillas (` `) desde ES (Ecma Script)
+
+        //Las comillas dobles y simples no son multilinea
+
+        //Para hacerlo multilinea necesitamos concatenar.
+        var w = "Hola, " + 
+        "qué tal?"
+
+        var q = w.concat(" Muy bien, y tú?")
+
+        var t = "Hola \"Daniel\" ";
+        var s = 'Adios \'Dani\' ';
+        var r = "Hello 'Daniel' ";
+        var rr = 'Bye, "Dani" ';
+
+        console.log(x);
+        console.log(y);
+        console.log(z);
+        console.log(w);
+        console.log(q);
+        console.log(t);
+        console.log(s);
+        console.log(r);
+        console.log(rr);
+
+        //PROPIEDADES
+        console.log(rr.length) //Length nos indica el número de caracteres que tiene nuestro String
+
+        //Los índices del String siempre empiezan en 0.
+        for (var i = 0; i<=rr.length; i++){
+            console.log(rr[i])
+        }
+
+        console.log("En la posición 6 del String rr está la letra: ", rr.charAt(6))
+        console.log("El código UTF-16 del carácter de la posición 6 del String rr es: ", rr.charCodeAt(6))
+
+        //Cuando indexOf no existe, devuelve un valor negativo -1
+        console.log(rr.indexOf("ye", 3))
+        console.log(rr.search('t'))
+        console.log(rr.includes("ye")) //Si existe, devuelve true sino, devuelve false.
+    </script>
+</body>
+</html>

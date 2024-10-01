@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built-In Objects</title>
+</head>
+<body>
+    <script>
+        /* 
+        BUILT-IN OBJECTS (MÁS COMUNES)
+        String()
+        Number()
+        Booleann()
+        Array()
+        Object()
+        Function()
+        RegExp()
+        Date()
+        Error()
+        Symbol()
+        */
+
+        var Str1 = new String("Hola"); //TIPO OBJETO (NEW)
+        var Str2 = "adios"; //TIPO STRING
+        console.log(Str1, Str2);
+        console.log(typeof Str1, typeof Str2);
+        console.log("Primera letra de Hola", Str1[0]);
+        console.log("Primera letra de adios", Str2[0]);
+
+        //En ambos casos se pueden utilizar los mismos métodos
+
+        var array1 = new Array(1, 2, 3);
+        var array2 = [4, 5, 6];
+
+        console.log(array1, array2);
+        console.log(typeof array1, typeof array2);
+        console.log("Primera posición del array1", array1[0]);
+        console.log("Primera posición del array2", array2[0]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <script>
+        var a = null; //NULL
+        var b; //UNDEFINED
+        var c = false; //BOOLEAN
+        var d = 4; //NUMBER
+        var e = 5.6; //DOUBLE
+        var f = "Hola"; //STRING
+        //TIPO OBJECT
+        var g = {
+            nombre: "Daniel",
+            apellidos: "Ramon Campos"
+        };
+
+        console.log(a, b, c, d, e, f, g);
+        console.log(typeof a);
+        console.log(typeof b);
+        console.log(typeof c);
+        console.log(typeof d);
+        console.log(typeof e);
+        console.log(typeof f);
+        console.log(typeof g);
+
+        //Los tipos de las variables son dinámicos
+
+        a = 3;
+
+        console.log(a);
+        console.log(typeof a);
+
+        // var -> para declarar variables
+        // ES6 -> declarar las variables con let o const
+
+        //ÁMBITO
+        let p1 = "hola";
+        function prueba(p1){
+            p1 = "adios";
+            console.log(p1);
+        }
+        prueba();
+        console.log(p1);
+
+        z = 99;
+        console.log(z); //No hemos declarado z pero se lo come, esto provoca un error llamado hoisting
+    </script>
+</body>
+</html>
