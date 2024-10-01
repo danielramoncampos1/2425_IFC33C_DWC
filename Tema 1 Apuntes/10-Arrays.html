@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <script>
+        var frutas = ["Manzana", "Pera", "Plátano"]
+        console.log(frutas, frutas[0], frutas[1], frutas[2])
+
+        frutas.push("Kiwi") // Añadir un elemento al final del array
+        console.log(frutas)
+
+        var a = frutas.pop() //Extraer el último elemento del array
+
+        console.log(frutas)
+        console.log(a)
+
+        frutas.unshift("Mango") // Añadir un elemento al principio del array
+        Console.log(frutas, frutas[0])
+
+        var b = frutas.shift() //Extraer el primer elemento del array
+        console.log(frutas)
+        console.log(b)
+
+        // Obtener el tamaño de un array
+        var tam = frutas.length;
+        console.log(tam)
+
+        // Borrar elementos del array
+        delete frutas[1] // Elimina el valor pero no elimina el índice del array (NO RECOMENDABLE)
+        console.log(frutas)
+
+        frutas.splice(1,1) // Eliminamos un elemento del array desde el índice 1 (Primero se indica el índice y luego cuantos elementos eliminar)
+        console.log(frutas, frutas[1])
+        
+    </script>
+
+</body>
+</html>
