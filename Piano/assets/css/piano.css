@@ -1,4 +1,11 @@
 /*css tret de https://github.com/LFeh/piano/blob/master/dev/assets/css/style.css*/
+body {
+    background-image: url('../img/background/wBackground.jpg');
+    background-repeat: no-repeat;   /* Prevents the image from repeating */
+    background-size: cover;         /* Makes the image cover the whole background */
+    background-position: center;    /* Centers the image */
+    background-attachment: fixed;   /* Keeps the background fixed when scrolling */
+}
 .piano {
     background: -webkit-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
     background: -moz-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
