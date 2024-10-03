@@ -1,10 +1,10 @@
 /*css tret de https://github.com/LFeh/piano/blob/master/dev/assets/css/style.css*/
 body {
     background-image: url('../img/background/wBackground.jpg');
-    background-repeat: no-repeat;   /* Prevents the image from repeating */
-    background-size: cover;         /* Makes the image cover the whole background */
-    background-position: center;    /* Centers the image */
-    background-attachment: fixed;   /* Keeps the background fixed when scrolling */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 .piano {
     background: -webkit-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
@@ -71,4 +71,10 @@ body {
 .key .black-key.active {
     border-bottom-width: 3px;
     top: 0;
+}
+
+.buscadorContainer{
+    background-color: white;
+    color: black;
+    padding: 0px 5px 10px 10px;
 }
