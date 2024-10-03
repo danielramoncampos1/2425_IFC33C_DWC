@@ -106,6 +106,10 @@ button {
     align-items: center;
 }
 
+.buscador :nth-child(2){
+    text-align: center;
+}
+
 .title{
     display: flex;
     justify-content: center;
