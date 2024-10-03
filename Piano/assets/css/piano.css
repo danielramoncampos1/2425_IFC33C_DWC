@@ -5,6 +5,9 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .piano {
     background: -webkit-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
@@ -16,6 +19,9 @@ body {
     padding: 0 1% 3%;
     text-align: center;
     border-radius: 10px;
+    width: 90vw;
+    height: auto;
+    max-width: 1000px;
 }
 
 .key {
@@ -84,11 +90,13 @@ button {
 .buscadorContainer{
     background-color: white;
     color: black;
-    padding: 0px 5px 10px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 90vw;
+    height: auto;
+    max-width: 1000px;
 }
 
 .buscador > button{
