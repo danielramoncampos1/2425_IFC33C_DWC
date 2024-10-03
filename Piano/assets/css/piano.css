@@ -73,6 +73,14 @@ body {
     top: 0;
 }
 
+button {
+    color: white;
+    background-color: rgb(210, 40, 40);
+    height: 40px;
+    border: none;
+    box-shadow: 2px 2px 5px grey;
+}
+
 .buscadorContainer{
     background-color: white;
     color: black;
@@ -80,10 +88,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .buscador > button{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title{
@@ -100,3 +112,25 @@ body {
             -1px 1px 0 white,    
             1px 1px 0 white;
 }
+
+.resultados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.canciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloCancion{
+    margin-right: 15px;
+}
+.tituloCancion :nth-child(2){
+    margin-top: -15px;
+    color: red;
+}
+
