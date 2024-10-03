@@ -140,6 +140,7 @@ button {
 
 .tituloCancion{
     margin-right: 15px;
+    width: 100%;
 }
 .tituloCancion :nth-child(2){
     margin-top: -15px;
