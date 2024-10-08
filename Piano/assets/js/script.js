@@ -2,7 +2,7 @@ const songs = [
     { title: "Sant Antoni i el Dimoni", notes: ["DO", "DO", "RE", "FA#", "MI"] },
     { title: "La balanguera", notes: ["DO", "FA#", "RE", "RE"] },
     { title: "Joan petit", notes: ["FA", "MI", "FA#", "MI"] },
-    { title: "Prueba4", notes: ["RE#", "FA#", "FA", "MI#"] }
+    { title: "Titelles", notes: ["RE#", "FA#", "FA", "MI#"] }
 ];
 
 let currentNotes = [];
@@ -21,10 +21,21 @@ function displayResults() {
     const container = document.getElementById('cancionesContainer');
     container.innerHTML = ''; // Limpiar resultados previos
 
-    // Filtrar las canciones según las notas en currentNotes
-    const filteredSongs = songs.filter(song =>
-        currentNotes.every(note => song.notes.includes(note))
-    );
+    // Filtrar las canciones según las notas en currentNotes, independientemente del orden pero respetando la cantidad
+    const filteredSongs = songs.filter(song => {
+        const songNotes = [...song.notes]; // Copia de las notas de la canción
+
+        // Verificar si cada nota en currentNotes aparece en songNotes la cantidad necesaria
+        return currentNotes.every(note => {
+            // Contar cuántas veces aparece la nota en currentNotes
+            const inputNoteCount = currentNotes.filter(n => n === note).length;
+            // Contar cuántas veces aparece la nota en songNotes
+            const songNoteCount = songNotes.filter(n => n === note).length;
+
+            // La canción debe tener al menos tantas instancias de la nota como se especifica en currentNotes
+            return songNoteCount >= inputNoteCount;
+        });
+    });
 
     if (filteredSongs.length > 0) {
         filteredSongs.forEach(song => {
@@ -46,6 +57,3 @@ function displayResults() {
 
 // Agregar el evento al botón para que llame a addNotes cuando se haga clic
 document.querySelector('.buscador button').addEventListener('click', addNotes);
-
-/*ESTE SCRIPT TIENE DIFERENTES ERRORES QUE DEBO CORREGIR, AL PONER EN EL INPUT DO DO RE, MUESTRA 2 CANCIONES
-(SANT ANTONI Y LA BALANGUERA, CUANDO REALMENTE LA BALANGUERA SI QUE CONTIENE DO Y RE PERO NO CONTIENE DOS DO*/
