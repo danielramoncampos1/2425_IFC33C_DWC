@@ -19,9 +19,13 @@ body {
     padding: 0 1% 3%;
     text-align: center;
     border-radius: 10px;
+}
+
+.pianoContainer,
+.buscadorContainer {
     width: 90vw;
-    height: auto;
     max-width: 1000px;
+    height: auto;
 }
 
 .key {
@@ -79,6 +83,18 @@ body {
     top: 0;
 }
 
+input {
+    height: 40px;
+    border: none;
+    box-shadow: 2px 2px 5px grey;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+}
+
 button {
     color: white;
     background-color: rgb(210, 40, 40);
@@ -94,9 +110,7 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 90vw;
-    height: auto;
-    max-width: 1000px;
+    border-radius: 10px;
 }
 
 .buscador > button{
@@ -104,10 +118,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.buscador :nth-child(2){
-    text-align: center;
+    padding: 0;
 }
 
 .title{
