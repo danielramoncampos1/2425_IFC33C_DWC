@@ -143,6 +143,11 @@ button {
     flex-direction: column;
     margin-top: 20px;
 }
+
+.resultados button{
+    width: 100%;
+}
+
 .canciones{
     display: flex;
     justify-content: center;
