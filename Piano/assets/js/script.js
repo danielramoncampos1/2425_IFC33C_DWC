@@ -2,7 +2,10 @@ const partitures = [
     { title: "Sant Antoni i el Dimoni", notes: ["DO", "DO", "RE", "FA#", "MI"] },
     { title: "La balanguera", notes: ["DO", "FA#", "RE", "RE"] },
     { title: "Joan petit", notes: ["FA", "MI", "FA#", "MI"] },
-    { title: "Titelles", notes: ["RE#", "FA#", "FA", "MI#"] }
+    { title: "Escriurem", notes: ["RE#", "FA#", "FA", "MI#"] },
+    { title: "Tramuntana", notes: ["MI", "DO", "DO#", "FA#"] },
+    { title: "Una lluna a l'aigua", notes: ["FA#", "FA#", "RE", "RE#"] },
+    { title: "Som Ocells", notes: ["DO#", "DO", "RE", "MI#"] }
 ];
 
 let cerca = [];
