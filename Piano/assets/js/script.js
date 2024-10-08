@@ -51,7 +51,7 @@ function displayResults() {
             container.appendChild(songDiv);
         });
     } else {
-        container.innerHTML = '<p>No hay resultados para las notas seleccionadas.</p>';
+        container.innerHTML = '<p>No hi ha resultats per a les notes seleccionades..</p>';
     }
 }
 
