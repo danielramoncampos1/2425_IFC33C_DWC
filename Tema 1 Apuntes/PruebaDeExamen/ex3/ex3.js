@@ -9,17 +9,16 @@ Para realizar este ejercicio, será necesario escoger una estructura de datos y 
 
 function sonAnagramas(texto1, texto2) {
 
-    texto1 = texto1.toLowerCase().replace(/\s/g, '');
-    texto2 = texto2.toLowerCase().replace(/\s/g, '');
+    let resultado = false;
 
-    if (texto1.length !== texto2.length) {
-        return false;
+    texto1 = texto1.split('').sort().join('');
+    texto2 = texto2.split('').sort().join('');
+
+    if(texto1 === texto2){
+        return true
     }
-
-    let arrTexto1 = texto1.split('').sort().join('');
-    let arrTexto2 = texto2.split('').sort().join('');
-
-    return arrTexto1 === arrTexto2;
+    
+    return resultado;
 }
 
 
