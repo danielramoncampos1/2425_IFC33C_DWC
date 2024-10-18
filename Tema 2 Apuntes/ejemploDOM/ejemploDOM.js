@@ -59,13 +59,23 @@ for (var i = 0; i < coches.length; i++){
     tr = document.createElement("tr")
     tbody.appendChild(tr)
 
-    td = document.createElement("td")
+    for (let propiedad in coches[i]){
+        td = document.createElement("td")
+        if (typeof coches[i][propiedad] === 'string'){
+            td.innerText = coches[i][propiedad]
+        }else{
+            td.innerText = coches[i][propiedad].nombre
+        }
+        tr.appendChild(td)
+    }
+
+    /* td = document.createElement("td")
     td.innerText = coches[i].marca.nombre
     tr.appendChild(td)
 
     td = document.createElement("td")
     td.innerText = coches[i].modelo
-    tr.appendChild(td)
+    tr.appendChild(td) */
 }
 
 div.appendChild(table)
