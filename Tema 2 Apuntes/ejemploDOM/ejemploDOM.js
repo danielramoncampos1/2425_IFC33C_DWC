@@ -34,13 +34,22 @@ table.appendChild(thead)
 var tr = document.createElement("tr")
 thead.appendChild(tr)
 
-var th = document.createElement("th")
+var cabeceras = ["MARCA", "MODELO"]
+
+var th;
+for (let cabecera of cabeceras){
+    th = document.createElement("th")
+    th.innerText = cabecera
+    tr.appendChild(th)
+}
+
+/* var th = document.createElement("th")
 th.innerText = "MARCA"
 tr.appendChild(th)
 
 var th = document.createElement("th")
 th.innerText = "MODELO"
-tr.appendChild(th)
+tr.appendChild(th) */
 
 var tbody = document.createElement("tbody")
 table.appendChild(tbody)
