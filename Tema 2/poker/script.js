@@ -49,21 +49,14 @@ function jugar() {
 
 //Función para Verificar Parejas
 function isPair(cards) {
-    //Se obtiene el valor de cada carta (por ejemplo, "jack", "king", "ace")
-    //dividiendo la cadena del nombre de la carta en partes y cogiendo la primera parte
-    let cardValues = cards.map(card => card.split('_')[0]);  
-    //Se crea un objeto counts que cuenta cuántas veces aparece cada valor de carta
-    let counts = {};
-    cardValues.forEach(value => {
-        /*
-        Aquí se verifica si counts[value] ya tiene un valor asignado 
-        (es decir, si el valor de carta value ya ha sido contado antes). 
-        Si counts[value] no tiene un valor (es undefined), se utiliza 0 como valor por defecto
-        Después de obtener el valor actual de counts[value] 
-        (o 0 si no ha sido contado antes), se le suma 1. Esto incrementa el conteo de la carta actual
-        */
+    const counts = {};
+    
+    // Contamos las apariciones de cada valor de carta
+    for (const card of cards) {
+        const value = card.split('_')[0];
         counts[value] = (counts[value] || 0) + 1;
-    });
-    //se verifica si alguno de los valores en counts es igual a 2, lo que indicaría una pareja
-    return Object.values(counts).some(count => count === 2);
+    }
+    
+    // Comprobamos si hay algún valor que aparece exactamente 2 veces
+    return Object.values(counts).includes(2);
 }
