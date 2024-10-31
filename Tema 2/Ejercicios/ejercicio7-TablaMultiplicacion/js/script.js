@@ -1,3 +1,12 @@
+/* 
+Ejercicio 7: Crear una tabla de multiplicación
+Genera una tabla de multiplicación completa en el DOM.
+En el archivo JavaScript, crea una función que genere la tabla de multiplicar del 1 al 10 y
+muéstrala en el DOM como una tabla HTML.
+Cada celda debe contener el producto de la multiplicación, y las filas y columnas deben
+etiquetarse con los números multiplicados.
+*/
+
 function generarTablaMultiplicacion() {
     const tabla = document.createElement('table');
     const headerRow = document.createElement('tr');

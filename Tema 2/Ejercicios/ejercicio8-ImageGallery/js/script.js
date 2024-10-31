@@ -1,4 +1,14 @@
-// Array de objetos que contienen la URL y descripción de las imágenes
+/* 
+Ejercicio 8: Crear una galería de imágenes dinámica
+Genera una galería de imágenes en el DOM a partir de un array de objetos que contenga
+URLs y descripciones de las imágenes.
+En el archivo JavaScript, crea un array de objetos donde cada objeto tenga dos
+propiedades: url y descripción.
+Para cada objeto en el array, genera un contenedor <div> que incluya la imagen (<img>) y
+un pie de foto (<p>).
+Asegúrate de que todos los elementos de la galería se muestren de forma ordenada en el
+DOM.
+*/
 const images = [
     {
         url: 'https://via.placeholder.com/200/0000ff',

@@ -1,5 +1,5 @@
 /* 
-Ejercicio 4: Crear una tabla de puntuaciones ordenada
+Ejercicio 10: Crear una tabla de puntuaciones ordenada
 Dado un array de objetos que representa a jugadores con su nombre y puntuación, crea una
 tabla HTML en el DOM ordenada por las puntuaciones de mayor a menor.
 Crea un array de objetos, donde cada objeto represente un jugador con nombre y

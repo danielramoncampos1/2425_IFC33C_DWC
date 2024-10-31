@@ -1,3 +1,14 @@
+/* 
+Ejercicio 9: Generar una lista de tareas agrupadas por categorías
+Crea una lista de tareas donde cada tarea tenga una categoría asociada, y muéstrala en el
+DOM agrupada por categorías.
+Crea un array de objetos donde cada objeto represente una tarea con las propiedades
+nombre (de la tarea) y categoría.
+En el DOM, muestra cada tarea dentro de una lista <ul> agrupada por su categoría, por
+ejemplo, "Casa", "Trabajo", "Estudios".
+Los nombres de cada categoría deben aparecer como títulos <h2> por encima de cada lista.
+*/
+
 const tareas = [
     { nombre: "Limpiar la casa", categoria: "Casa" },
     { nombre: "Enviar informes", categoria: "Trabajo" },
