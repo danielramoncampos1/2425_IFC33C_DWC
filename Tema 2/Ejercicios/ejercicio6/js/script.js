@@ -1,3 +1,11 @@
+/* 
+Ejercicio 6: Crear una tabla a partir de un array de objetos
+Descripción: Crea una tabla HTML usando datos de un array de objetos.
+En el archivo JavaScript, crea un array de objetos donde cada objeto representa una fila de
+datos (con propiedades como nombre, edad, email, etc.).
+Genera una tabla <table> en el DOM a partir de estos datos y agrégala al HTML.
+*/
+
 const datos = [
     { nombre: 'Daniel', edad: 30, email: 'Daniel@gmail.com' },
     { nombre: 'Helena', edad: 35, email: 'Helena@gmail.com' },
