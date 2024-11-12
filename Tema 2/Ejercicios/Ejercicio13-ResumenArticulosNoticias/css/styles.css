@@ -1,0 +1,19 @@
+#articulos-destacados {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.articulo {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.articulo h3 {
+    margin: 0 0 10px;
+}
+.articulo p {
+    margin: 5px 0;
+}
