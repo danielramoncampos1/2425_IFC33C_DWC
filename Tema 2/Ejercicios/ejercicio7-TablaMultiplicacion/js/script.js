@@ -25,18 +25,18 @@ function generarTablaMultiplicacion() {
     tabla.appendChild(headerRow);
     
     // Crear filas de la tabla
-    for (let i = 1; i <= 10; i++) {
+    for (let j = 1; j <= 10; j++) {
         const row = document.createElement('tr');
         
         // Encabezado de fila
         const th = document.createElement('th');
-        th.innerText = i;
+        th.innerText = j;
         row.appendChild(th);
         
         // Celdas de la fila
-        for (let j = 1; j <= 10; j++) {
+        for (let k = 1; k <= 10; k++) {
             const td = document.createElement('td');
-            td.innerText = i * j;
+            td.innerText = j * k;
             row.appendChild(td);
         }
         
