@@ -28,7 +28,7 @@ const articulos = [
         id: 3,
         titulo: "Artículo Tres",
         autor: "Autor C",
-        fecha: "2023-09-22",
+        fecha: "2024-09-22",
         resumen: "Este es el resumen del tercer artículo."
     }
 ];
