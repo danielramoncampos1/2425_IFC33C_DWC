@@ -1,3 +1,12 @@
+/* 
+Ejercicio 11: Crear un listado de productos con información detallada
+Simula un catálogo de productos de una tienda en línea.
+Crea un array de objetos donde cada objeto representa un producto con propiedades como
+nombre, precio, descripción y imagenURL.
+Genera una estructura en el DOM que muestre cada producto con su nombre en <h3>, el
+precio en un <p>, una breve descripción en otro <p> y la imagen en un <img>.
+Organiza todos los productos en una cuadrícula con filas y columnas.
+*/
 const productos = [
     {
         nombre: 'Camiseta',
