@@ -11,6 +11,8 @@ const cards = [
 ]
 
 let response = 0
+let selectedCards = []
+let resultContainer = document.getElementById('result')
 
 function hacerTrampas() {
     while(response != 1 && response != 2) {
@@ -33,10 +35,7 @@ function getRandomInt(max) {
 }
 
 function mostrarCartas(){
-    let selectedCards = [] // array vacío que almacenará las cartas seleccionadas
-    let cardContainer = document.getElementById('cards-container') // es una referencia al elemento HTML donde se mostrarán las cartas
-    let resultContainer = document.getElementById('result') // es una referencia al elemento HTML donde se mostrará el resultado del juego.
-    
+    let cardContainer = document.getElementById('cards-container')
     cardContainer.innerHTML = ''
     resultContainer.innerHTML = ''
 
@@ -59,13 +58,12 @@ function mostrarCartas(){
 }
 
 function jugarSinTrampas() {
-    let selectedCards = mostrarCartas()
+    selectedCards = mostrarCartas()
     comprobar(selectedCards)
 }
 
 function jugarConTrampas(){
-    let selectedCards = mostrarCartas()
-    let resultContainer = document.getElementById('result')
+    selectedCards = mostrarCartas()
     resultContainer.textContent = "¡Has ganado la partida!"
 }
 
@@ -78,7 +76,7 @@ function comprobar(selectedCards){
     }
 }
 
-// Función para Verificar Parejas
+//Verificar Parejas
 function isPair(cards) {
     const counts = {}
     
