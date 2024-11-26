@@ -1,4 +1,4 @@
-//Creamos un array de imágenes de cartas
+// Creamos un array de imágenes de cartas
 const cards = [
     '2_of_clubs.png', '3_of_clubs.png', '4_of_clubs.png', '5_of_clubs.png', '6_of_clubs.png', 
     '7_of_clubs.png', '8_of_clubs.png', '9_of_clubs.png', '10_of_clubs.png',
@@ -10,20 +10,37 @@ const cards = [
     '7_of_spades.png', '8_of_spades.png', '9_of_spades.png', '10_of_spades.png'
 ]
 
-//Función para obtener un número aleatorio
+let response = 0
+
+function hacerTrampas() {
+    while(response != 1 && response != 2) {
+        response = prompt("Deseas hacer trampas? elige una opción: \n 1 - Yes \n 2 - No")
+    }
+
+    let popup = window.open("juego.html", "popup", "width=800,height=800");
+    popup.onload = function() {
+        if(response == 1) {
+            popup.jugarConTrampas()
+        } else if(response == 2) {
+            popup.jugarSinTrampas()
+        }
+    }
+}
+
+// Función para obtener un número aleatorio
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
 
-function jugar() {
-    let selectedCards = [] //array vacío que almacenará las cartas seleccionadas
-    let cardContainer = document.getElementById('cards-container') //es una referencia al elemento HTML donde se mostrarán las cartas
-    let resultContainer = document.getElementById('result') //es una referencia al elemento HTML donde se mostrará el resultado del juego.
+function mostrarCartas(){
+    let selectedCards = [] // array vacío que almacenará las cartas seleccionadas
+    let cardContainer = document.getElementById('cards-container') // es una referencia al elemento HTML donde se mostrarán las cartas
+    let resultContainer = document.getElementById('result') // es una referencia al elemento HTML donde se mostrará el resultado del juego.
     
     cardContainer.innerHTML = ''
     resultContainer.innerHTML = ''
 
-    //Selección de cartas aleatorias
+    // Selección de cartas aleatorias
     while (selectedCards.length < 5) {
         let randomIndex = getRandomInt(cards.length)
         let selectedCard = cards[randomIndex]
@@ -31,15 +48,29 @@ function jugar() {
             selectedCards.push(selectedCard)
         }
     }
-
-    //Mostrar las cartas seleccionadas
+    
+    // Mostrar las cartas seleccionadas
     selectedCards.forEach(card => {
         let img = document.createElement('img')
         img.src = `cards/${card}`
         cardContainer.appendChild(img)
     })
+    return selectedCards
+}
 
-    //Comprobación de combinaciones ganadoras
+function jugarSinTrampas() {
+    let selectedCards = mostrarCartas()
+    comprobar(selectedCards)
+}
+
+function jugarConTrampas(){
+    let selectedCards = mostrarCartas()
+    let resultContainer = document.getElementById('result')
+    resultContainer.textContent = "¡Has ganado la partida!"
+}
+
+function comprobar(selectedCards){
+    let resultContainer = document.getElementById('result')
     if (isPair(selectedCards)) {
         resultContainer.textContent = "¡Tienes una pareja!"
     } else {
@@ -47,7 +78,7 @@ function jugar() {
     }
 }
 
-//Función para Verificar Parejas
+// Función para Verificar Parejas
 function isPair(cards) {
     const counts = {}
     
@@ -59,18 +90,4 @@ function isPair(cards) {
     
     // Comprobamos si hay algún valor que aparece exactamente 2 veces
     return Object.values(counts).includes(2)
-}
-
-function hacerTrampas() {
-    let response = 0
-
-    while(response != 1 && response != 2) {
-        response = prompt("Deseas hacer trampas? elige una opción: \n 1 - Yes \n 2 - No")
-    }
-
-    if(response == 1) {
-        window.open("trampas.html", "popup", "width=800,height=800")
-    } else if(response == 2) {
-        window.open("sinTrampas.html", "popup", "width=800,height=800")
-    }
 }
