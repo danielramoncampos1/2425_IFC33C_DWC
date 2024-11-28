@@ -123,14 +123,24 @@ function muestraPartituras(){
         // Crea una celda para las acciones
         const tdActions = document.createElement('td');
 
-        // Crea el botón de editar y añade el contenido
+        // Crea el botón de editar
         const editButton = document.createElement('button');
-        editButton.textContent = 'Editar';
+        const iconoEdit = document.createElement('i');
+        iconoEdit.className = 'fas fa-edit';
+        const textoEditar = document.createTextNode('Editar');
+        
+        editButton.appendChild(iconoEdit);
+        editButton.appendChild(textoEditar);
         tdActions.appendChild(editButton);
 
         // Crea el botón de borrar y añade el contenido
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Esborrar';
+        const iconoDelete = document.createElement('i');
+        iconoDelete.className = 'fas fa-trash';
+        const textoBorrar = document.createTextNode('Esborrar');
+        
+        deleteButton.appendChild(iconoDelete);
+        deleteButton.appendChild(textoBorrar);
         tdActions.appendChild(deleteButton);
 
         // Añade la celda de acciones a la fila

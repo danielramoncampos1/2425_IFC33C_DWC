@@ -83,6 +83,11 @@ button {
     margin-right: 5px;
 }
 
+button i {
+    margin-right: 7px; /* Espacio entre el icono y el texto */
+}
+
+
 button:hover {
     background-color: #b53030;
 }
