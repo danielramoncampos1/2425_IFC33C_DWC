@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #d13d3d;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.nav button {
+    background-color: #d13d3d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.nav button:hover {
+    background-color: #b53030;
+}
+
+.nueva-partitura {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.nueva-partitura button {
+    background-color: #d13d3d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.nueva-partitura button:hover {
+    background-color: #b53030;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+}
+
+thead {
+    background-color: #d13d3d;
+    text-align: center;
+    color: white;
+}
+
+tr{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    background-color: #d13d3d;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #b53030;
+}
