@@ -163,3 +163,6 @@ function borrarPartitura() {
     isConfirmed ? alert("Element esborrat") : alert("Acció cancel·lada")
 }
 
+function login(){
+    window.open("login.html", "popup", "width=400,height=400")
+}
