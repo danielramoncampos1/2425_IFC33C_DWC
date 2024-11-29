@@ -157,10 +157,10 @@ function muestraPartituras(){
 }
 
 
-function borrarPartitura() {
-    let isConfirmed = confirm("Estàs segur que vols esborrar aquesta partitura?")
+function borrarPartitura(id) {
+    let isConfirmed = confirm(`Estàs segur que vols esborrar aquest element amb ID: ${id}?`)
 
-    isConfirmed ? alert("Element esborrat") : alert("Acció cancel·lada")
+    isConfirmed ? alert(`Element amb ID: ${id} esborrat`) : alert("Acció cancel·lada")
 }
 
 function login(){
