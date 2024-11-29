@@ -163,6 +163,19 @@ function borrarPartitura(id) {
     isConfirmed ? alert(`Element amb ID: ${id} esborrat`) : alert("Acció cancel·lada")
 }
 
-function login(){
-    window.open("login.html", "popup", "width=400,height=400")
+function login() {
+    // Dimensiones del popup
+    const popupWidth = 400;
+    const popupHeight = 400;
+
+    // Dimensiones de la pantalla
+    const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
+
+    // Calcular la posición centrada
+    const left = (screenWidth - popupWidth) / 2;
+    const top = (screenHeight - popupHeight) / 2;
+
+    // Abrir la ventana emergente
+    window.open("login.html", "popup", `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`);
 }
