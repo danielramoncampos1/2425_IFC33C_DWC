@@ -10,7 +10,6 @@ Requisitos:
 
 let body = document.querySelector('body')
 let ul = document.createElement('ul')
-let ul2 = document.createElement('ul')
 
 let array = [12, 24, 3, 5, 1]
 
