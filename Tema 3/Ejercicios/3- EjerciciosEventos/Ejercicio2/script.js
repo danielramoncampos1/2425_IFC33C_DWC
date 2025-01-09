@@ -7,6 +7,12 @@ Cambia el texto del botón después de hacer clic utilizando una segunda alerta,
 alert('El texto del botón cambiará');
 this.innerText = '¡Texto cambiado!’;
 */
+document.addEventListener('DOMContentLoaded', function () {
+    let boton = document.getElementById('boton1');
+    boton.addEventListener('click', function () {
+        cambiarTexto(boton);
+    });
+});
 
 function cambiarTexto(boton) {
     alert('¡Has hecho clic!');
