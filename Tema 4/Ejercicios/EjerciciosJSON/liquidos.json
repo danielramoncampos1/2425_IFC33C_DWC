@@ -1,0 +1,140 @@
+{
+    "contenedores": [
+        {
+            "tipo": "Grande",
+            "descripcion": "Acepta envases grandes",
+            "envases_aceptados": [
+                "Grande ancho",
+                "Grande alto"
+            ]
+        },
+        {
+            "tipo": "Mediano",
+            "descripcion": "No acepta envases grandes",
+            "envases_aceptados": [
+                "Mediano ancho",
+                "Mediano alto",
+                "Pequeño"
+            ]
+        },
+        {
+            "tipo": "Vertical",
+            "descripcion": "Acepta envases altos",
+            "envases_aceptados": [
+                "Grande alto",
+                "Mediano alto"
+            ]
+        }
+    ],
+    "envases": [
+        {
+            "tipo": "Grande ancho",
+            "valido_para": [
+                "Alimentos"
+            ]
+        },
+        {
+            "tipo": "Grande alto",
+            "valido_para": [
+                "Alimentos"
+            ]
+        },
+        {
+            "tipo": "Mediano ancho",
+            "valido_para": [
+                "Alimentos"
+            ]
+        },
+        {
+            "tipo": "Mediano alto",
+            "valido_para": [
+                "Sustancias corrosivas"
+            ]
+        },
+        {
+            "tipo": "Pequeño",
+            "valido_para": [
+                "Sustancias corrosivas"
+            ]
+        }
+    ],
+    "liquidos": [
+        {
+            "nombre": "Agua",
+            "compatible_envases": [
+                "Grande ancho",
+                "Grande alto",
+                "Mediano ancho",
+                "Mediano alto",
+                "Pequeño"
+            ]
+        },
+        {
+            "nombre": "Leche",
+            "compatible_envases": [
+                "Grande ancho",
+                "Grande alto",
+                "Mediano ancho"
+            ]
+        },
+        {
+            "nombre": "Lejía",
+            "compatible_envases": [
+                "Mediano alto",
+                "Pequeño"
+            ]
+        },
+        {
+            "nombre": "Amoniaco",
+            "compatible_envases": [
+                "Mediano alto",
+                "Pequeño"
+            ]
+        },
+        {
+            "nombre": "Jabón",
+            "compatible_envases": [
+                "Grande ancho",
+                "Mediano ancho",
+                "Pequeño"
+            ]
+        },
+        {
+            "nombre": "Aguarrás",
+            "compatible_envases": [
+                "Mediano alto",
+                "Pequeño"
+            ]
+        },
+        {
+            "nombre": "Gasolina",
+            "compatible_envases": [
+                "Mediano alto",
+                "Pequeño"
+            ]
+        },
+        {
+            "nombre": "Aceite",
+            "compatible_envases": [
+                "Grande ancho",
+                "Grande alto",
+                "Mediano ancho"
+            ]
+        },
+        {
+            "nombre": "Vinagre",
+            "compatible_envases": [
+                "Grande ancho",
+                "Grande alto",
+                "Mediano ancho"
+            ]
+        },
+        {
+            "nombre": "Alcohol",
+            "compatible_envases": [
+                "Mediano alto",
+                "Pequeño"
+            ]
+        }
+    ]
+}
