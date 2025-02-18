@@ -1,0 +1,49 @@
+<!--  
+Convierte una función que usa callbacks en una función que retorna una promesa.
+1. Implementa una función llamada simularDescarga que acepte un callback y simule la descarga de un archivo (usa setTimeout para simular el tiempo de espera).
+2. Reescribe la función para que en lugar de callbacks utilice promesas.
+3. Usa la nueva función basada en promesas para descargar tres archivos y mostrar un mensaje al finalizar.
+
+● Asegúrate de usar la nueva versión con promesas en lugar de la anterior con callbacks.
+● Muestra mensajes en el DOM indicando cuándo se descarga cada archivo.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <h1>Descarga de archivos</h1>
+    <button id="descargar">Descargar archivos</button>
+    <p id="mensaje"></p>
+
+    <script>
+        function simularDescarga() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve();
+                }, 2000);
+            });
+        }
+
+        document.getElementById('descargar').addEventListener('click', () => {
+            const mensaje = document.getElementById('mensaje');
+            mensaje.textContent = "Descargando archivo 1...";
+            simularDescarga()
+                .then(() => {
+                    mensaje.textContent = " Descargado archivo 1. Descargando archivo 2...";
+                    return simularDescarga();
+                })
+                .then(() => {
+                    mensaje.textContent = " Descargado archivo 2. Descargando archivo 3...";
+                    return simularDescarga();
+                })
+                .then(() => {
+                    mensaje.textContent = " Descargado archivo 3.";
+                });
+        });
+    </script>
+</html>

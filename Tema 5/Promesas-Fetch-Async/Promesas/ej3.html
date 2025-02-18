@@ -1,0 +1,64 @@
+<!--  
+Crea una aplicación web que cargue tres promesas que simulen tareas con tiempos distintos (por ejemplo, "Imagen A", "Imagen B" y "Imagen C").
+
+1. Usa Promise.race para mostrar cuál de las tareas terminó primero.
+2. Muestra el mensaje "La tarea más rápida fue: [nombre de la tarea]".
+3. Si ocurre un error en cualquiera de las tareas, rechaza la promesa y muestra "Error al cargar las tareas".
+Requisitos:
+● Simula los tiempos de carga con setTimeout.
+● Implementa un diseño simple con botones para iniciar la carga.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiempos de respuesta</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px; margin: 10px; }
+        #mensaje { margin-top: 20px; font-weight: bold; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <button onclick="iniciarRespuestas()">Iniciar</button>
+    <div id="mensaje"></div>
+</body>
+<script>
+    
+    function iniciarRespuestas() {
+        const mensaje = document.getElementById("mensaje");
+        mensaje.textContent = "Cargando...";
+        mensaje.className = "";
+
+        const promesa1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Imagen A");
+            }, 3000);
+        });
+
+        const promesa2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Imagen B");
+            }, 2000);
+        });
+
+        const promesa3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Imagen C");
+            }, 4000);
+        });
+
+        Promise.race([promesa1, promesa2, promesa3])
+            .then(respuesta => {
+                mensaje.textContent = "La tarea más rápida fue: " + respuesta;
+            })
+            .catch(error => {
+                mensaje.textContent = "Error al cargar las tareas";
+                mensaje.className = "error";
+            });
+    }
+</script>
+</html>

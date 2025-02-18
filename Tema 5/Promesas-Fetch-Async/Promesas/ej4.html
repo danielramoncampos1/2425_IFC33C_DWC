@@ -1,0 +1,68 @@
+<!--
+Crea una aplicación web que simule un flujo de procesamiento encadenado:
+1. Simula una promesa que representa la descarga de un archivo en 3 segundos.
+2. Una vez descargado, otra promesa debe procesar los datos del archivo (2 segundos).
+3. Finalmente, una tercera promesa debe guardar los datos procesados en un sistema (1 segundo).
+4. Muestra mensajes en el DOM indicando en qué paso del proceso se encuentra la aplicación.
+Requisitos:
+● Usa encadenamiento con .then para gestionar las promesas.
+● Si alguna promesa falla, muestra el error en rojo y detén el proceso.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesamiento de Archivos</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px; margin: 10px; }
+        #mensaje { margin-top: 20px; font-weight: bold; }
+        .error { color: red; }
+    </style>
+<body>
+    <h1>Procesamiento de Archivos</h1>
+    <button onclick="iniciarProceso()">Iniciar proceso</button>
+    <div id="mensaje"></div>
+
+    <script>
+        function iniciarProceso() {
+        const mensaje = document.getElementById("mensaje");
+        mensaje.textContent = "Descargando archivo...";
+        mensaje.className = "";
+
+        const promesaDescarga = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Archivo descargado");
+            }, 3000);
+        });
+
+        promesaDescarga
+            .then(respuesta => {
+                mensaje.textContent = respuesta;
+                mensaje.textContent = "Procesando datos...";
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve("Datos procesados");
+                    }, 2000);
+                });
+            })
+            .then(respuesta => {
+                mensaje.textContent = respuesta;
+                mensaje.textContent = "Guardando datos...";
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve("Datos guardados");
+                    }, 1000);
+                });
+            })
+            .then(respuesta => {
+                mensaje.textContent = respuesta;
+            })
+            .catch(error => {
+                mensaje.textContent = error;
+                mensaje.className = "error";
+            });
+        }
+    </script>
+</html>

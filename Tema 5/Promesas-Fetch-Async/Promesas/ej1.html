@@ -1,0 +1,60 @@
+<!-- 
+Crea una aplicación web que permita simular una búsqueda de usuarios por nombre utilizando una promesa.
+1. Cuando el usuario ingrese un nombre en un campo de texto y haga clic en un botón de "Buscar", muestra el mensaje "Buscando..." mientras esperas la respuesta.
+2. Después de 2 segundos, resuelve la promesa mostrando si el usuario existe o no en una lista de usuarios simulada.
+3. Si ocurre un error en el proceso de búsqueda (por ejemplo, el nombre está vacío), rechaza la promesa con un mensaje de error.
+Requisitos:
+● Usa un array de nombres para simular los datos de los usuarios.
+● Muestra mensajes de error en rojo.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Usuarios</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin: 10px; }
+        #mensaje { margin-top: 20px; font-weight: bold; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Buscar Usuario</h1>
+    <input type="text" id="nombre" placeholder="Ingresa un nombre">
+    <button onclick="buscarUsuario()">Buscar</button>
+    <div id="mensaje"></div>
+
+    <script>
+        const usuarios = ["Ana", "Carlos", "María", "Pedro", "Luis"];
+
+        function buscarUsuario() {
+            const nombre = document.getElementById("nombre").value.trim();
+            const mensaje = document.getElementById("mensaje");
+            mensaje.textContent = "Buscando...";
+            mensaje.className = "";
+
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (!nombre) {
+                        reject("El campo no puede estar vacío.");
+                    } else if (usuarios.includes(nombre)) {
+                        resolve(`Usuario encontrado: ${nombre}`);
+                    } else {
+                        resolve("Usuario no encontrado.");
+                    }
+                }, 2000);
+            })
+            .then(respuesta => {
+                mensaje.textContent = respuesta;
+            })
+            .catch(error => {
+                mensaje.textContent = error;
+                mensaje.className = "error";
+            });
+        }
+    </script>
+</body>
+</html>

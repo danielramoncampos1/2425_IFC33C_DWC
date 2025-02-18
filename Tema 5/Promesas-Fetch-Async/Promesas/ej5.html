@@ -1,0 +1,54 @@
+<!--  
+Crea una promesa personalizada que simule el lanzamiento de un dado.
+1. Cuando el usuario haga clic en un botón, lanza el dado (genera un número aleatorio entre 1 y 6).
+2. Si el resultado es mayor o igual a 4, resuelve la promesa mostrando "¡Éxito! Obtuviste un [número]".
+3. Si el resultado es menor a 4, rechaza la promesa mostrando "Fallaste. Obtuviste un [número]".
+Requisitos:
+● Implementa un diseño simple con un botón y un área para mostrar los resultados.
+● Utiliza estilos para distinguir entre éxito y fallo.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dado</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px; margin: 10px; }
+        #mensaje { margin-top: 20px; font-weight: bold; }
+        .error { color: red; }
+    </style>
+<body>
+    <h1>Lanza el dado</h1>
+    <button onclick="lanzarDado()">Lanza el dado</button>
+    <div id="mensaje"></div>
+
+    <script>
+        function lanzarDado() {
+            const mensaje = document.getElementById("mensaje");
+            mensaje.textContent = "Lanzando dado...";
+            mensaje.className = "";
+
+            const promesaDado = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const resultado = Math.floor(Math.random() * 6) + 1;
+                    if (resultado >= 4) {
+                        resolve(`¡Éxito! Obtuviste un ${resultado}`);
+                    } else {
+                        reject(`Fallaste. Obtuviste un ${resultado}`);
+                    }
+                }, 2000);
+            });
+
+            promesaDado
+                .then(respuesta => {
+                    mensaje.textContent = respuesta;
+                })
+                .catch(error => {
+                    mensaje.textContent = error;
+                    mensaje.className = "error";
+                });
+        }
+    </script>
+</html>

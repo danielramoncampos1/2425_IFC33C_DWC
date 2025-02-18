@@ -1,0 +1,56 @@
+<!-- 
+Crea una aplicación web que simule un temporizador.
+1. Pide al usuario ingresar un número de segundos en un campo de texto y haz clic en "Iniciar temporizador".
+2. Utiliza una promesa para esperar los segundos indicados.
+3. Al finalizar, muestra un mensaje diciendo: "El tiempo ha terminado".
+4. Si el usuario no ingresa un número válido, rechaza la promesa con un mensaje de error.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { padding: 10px; margin: 10px; }
+        #mensaje { margin-top: 20px; font-weight: bold; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Inserta segundos</h1>
+    <input type="text" id="segundos" placeholder="Ingresa número de segundos">
+    <button onclick="iniciarTemporizador()">Buscar</button>
+    <div id="mensaje"></div>
+</body>
+<script>
+    
+    function iniciarTemporizador() {
+        const segundos = document.getElementById("segundos").value.trim();
+        const mensaje = document.getElementById("mensaje");
+        mensaje.textContent = "Contando...";
+        mensaje.className = "";
+
+        new Promise((resolve, reject) => {
+                if (!segundos) {
+                    reject("El campo no puede estar vacío.");
+                } else if (segundos >= 2 && segundos <= 30) {
+                    setTimeout(() => {
+                        resolve("El tiempo ha terminado.");
+                    }, segundos * 1000);
+                } else {
+                    resolve("Introduce un valor entre 2 y 30.");
+                }
+        })
+        .then(respuesta => {
+            mensaje.textContent = respuesta;
+        })
+        .catch(error => {
+            mensaje.textContent = error;
+            mensaje.className = "error";
+        });
+    }
+</script>
+</html>

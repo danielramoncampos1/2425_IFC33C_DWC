@@ -1,0 +1,108 @@
+<!--  
+Crea una aplicación web que simule el procesamiento de pagos con tarjeta.
+1. El usuario debe ingresar un número de tarjeta, el CVV y la cantidad a pagar, y hacer clic en "Pagar".
+2. Valida los datos ingresados (por ejemplo, que no estén vacíos y tengan el formato correcto).
+3. Usa una promesa para simular el tiempo de procesamiento (2 segundos).
+4. Si la promesa se resuelve, muestra "Pago realizado con éxito". Si se rechaza, muestra "Error al procesar el pago".
+Requisitos:
+● Los errores deben mostrarse en rojo.
+● Valida los campos antes de enviar los datos.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pago con tarjeta</h1>
+    <label for="tarjeta">Número de tarjeta:</label>
+    <input type="text" id="tarjeta">
+    <span id="errorTarjeta" class="error"></span>
+    <br>
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv">
+    <span id="errorCvv" class="error"></span>
+    <br>
+    <label for="cantidad">Cantidad a pagar:</label>
+    <input type="text" id="cantidad">
+    <span id="errorCantidad" class="error"></span>
+    <br>
+    <button id="pagar">Pagar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        document.getElementById('pagar').addEventListener('click', () => {
+            let errores = false;
+
+            const tarjeta = document.getElementById('tarjeta');
+            const cvv = document.getElementById('cvv');
+            const cantidad = document.getElementById('cantidad');
+            const errorTarjeta = document.getElementById('errorTarjeta');
+            const errorCvv = document.getElementById('errorCvv');
+            const errorCantidad = document.getElementById('errorCantidad');
+            const mensaje = document.getElementById('mensaje');
+
+            const tarjetaRegex = /^\d{16}$/;
+            const cvvRegex = /^\d{3}$/;
+            const cantidadRegex = /^\d+(\.\d{1,2})?$/;
+
+            errorTarjeta.textContent = "";
+            errorCvv.textContent = "";
+            errorCantidad.textContent = "";
+            mensaje.textContent = "";
+
+            if (!tarjeta.value.trim()) {
+                errorTarjeta.textContent = "El número de tarjeta es obligatorio";
+                errores = true;
+            } else if (!tarjetaRegex.test(tarjeta.value.trim())) {
+                errorTarjeta.textContent = "El número de tarjeta debe tener 16 dígitos";
+                errores = true;
+            }
+
+            if (!cvv.value.trim()) {
+                errorCvv.textContent = "El CVV es obligatorio";
+                errores = true;
+            } else if (!cvvRegex.test(cvv.value.trim())) {
+                errorCvv.textContent = "El CVV debe tener 3 dígitos";
+                errores = true;
+            }
+
+            if (!cantidad.value.trim()) {
+                errorCantidad.textContent = "La cantidad es obligatoria";
+                errores = true;
+            } else if (!cantidadRegex.test(cantidad.value.trim())) {
+                errorCantidad.textContent = "La cantidad debe ser un número válido";
+                errores = true;
+            }
+
+            if (!errores) {
+                procesarPago()
+                    .then(() => {
+                        mensaje.style.color = "green";
+                        mensaje.textContent = "Pago realizado con éxito";
+                    })
+                    .catch(() => {
+                        mensaje.style.color = "red";
+                        mensaje.textContent = "Error al procesar el pago";
+                    });
+            }
+        });
+
+        function procesarPago() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const exito = Math.random() > 0.2; // 80% éxito, 20% fallo
+                    exito ? resolve() : reject();
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

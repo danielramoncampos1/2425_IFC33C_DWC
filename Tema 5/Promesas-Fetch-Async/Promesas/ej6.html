@@ -1,0 +1,71 @@
+<!--  
+Crea una aplicación web que simule la carga de cinco tareas con resultados variados (éxito o error).
+1. Usa Promise.allSettled para gestionar todas las promesas.
+2. Muestra una lista con el estado de cada tarea ("cumplida" o "rechazada") y el resultado correspondiente.
+3. El proceso de cada tarea debe tomar un tiempo aleatorio entre 1 y 3 segundos.
+Requisitos:
+● Muestra los estados de las tareas en una lista.
+● Diferencia visualmente entre tareas cumplidas y rechazadas.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Carga de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simulación de Carga de Tareas</h1>
+    <p id="mensaje">Presiona el botón para iniciar las tareas</p>
+    <button onclick="iniciar()">Iniciar</button>
+    <ul id="resultados"></ul>
+
+    <script>
+        function tarea(id) {
+            return new Promise((resolve, reject) => {
+                const tiempo = Math.floor(Math.random() * 3000) + 1000; // Entre 1 y 3 segundos
+                setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                        resolve(`Tarea ${id} completada`);
+                    } else {
+                        reject(`Tarea ${id} fallida`);
+                    }
+                }, tiempo);
+            });
+        }
+
+        function iniciar() {
+            const mensaje = document.getElementById("mensaje");
+            mensaje.textContent = "Cargando tareas...";
+            mensaje.className = "";
+            document.getElementById("resultados").innerHTML = "";
+
+            const tareas = [tarea(1), tarea(2), tarea(3), tarea(4), tarea(5)];
+            
+            Promise.allSettled(tareas).then(resultados => {
+                mensaje.textContent = "Carga completada";
+                const lista = document.getElementById("resultados");
+                
+                resultados.forEach((resultado, index) => {
+                    const item = document.createElement("li");
+                    item.textContent = resultado.value || resultado.reason;
+                    item.className = resultado.status === "fulfilled" ? "success" : "error";
+                    lista.appendChild(item);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
