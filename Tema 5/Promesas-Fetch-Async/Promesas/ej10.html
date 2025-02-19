@@ -1,0 +1,64 @@
+<!--  
+Has recibido una lista de productos desde un servidor. Debes crear una función obtenerProductos que devuelva una promesa con el siguiente array de productos después de 1 segundo.
+[
+{ id: 1, nombre: "Teclado", precio: 30 },
+{ id: 2, nombre: "Ratón", precio: 20 },
+{ id: 3, nombre: "Monitor", precio: 200 }
+]
+Luego, encadena otra promesa para aplicar un descuento del 10% a cada producto y muestra el resultado final. Si ocurre un error durante el proceso, captura y muestra el error.
+1. Encadena las promesas utilizando .then() para aplicar el descuento.
+2. Utiliza .catch() para manejar errores en cualquier parte de la cadena.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    <h1>Obtener productos</h1>
+    <button id="obtener">Obtener productos</button>
+    <p id="mensaje"></p>
+    <script>
+        function obtenerProductos() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([
+                        { id: 1, nombre: "Teclado", precio: 30 },
+                        { id: 2, nombre: "Ratón", precio: 20 },
+                        { id: 3, nombre: "Monitor", precio: 200 }
+                    ]);
+                }, 1000);
+            });
+        }
+
+        document.getElementById('obtener').addEventListener('click', () => {
+            const mensaje = document.getElementById('mensaje');
+            mensaje.textContent = "Obteniendo productos...";
+            obtenerProductos()
+                .then(productos => {
+                    return productos;
+                })
+                .then(productos => {
+                    return productos.map(producto => {
+                        return {
+                            ...producto,
+                            precio: producto.precio * 0.9
+                        };
+                    });
+                })
+                .then(productos => {
+                    mensaje.textContent = "Productos con descuento del 10%:";
+                    productos.forEach(producto => {
+                        const p = document.createElement('p');
+                        p.textContent = `ID: ${producto.id}, Nombre: ${producto.nombre}, Precio: ${producto.precio}€`;
+                        document.body.appendChild(p);
+                    });
+                })
+                .catch(error => {
+                    mensaje.textContent = error;
+                });
+        });
+    </script>
+</body>
+</html>

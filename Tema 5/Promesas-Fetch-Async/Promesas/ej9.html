@@ -1,0 +1,58 @@
+<!-- 
+Tu tarea es simular una llamada a un servidor para obtener una lista de usuarios. Crea una función obtenerUsuarios que devuelva una promesa. La promesa debe resolverse después de 2 segundos con un array de objetos que representen usuarios. Si ocurre un error (simula una probabilidad del 30%), la promesa debe rechazarse con un mensaje de error.
+// Ejemplo del resultado esperado:
+[
+{ id: 1, nombre: "Juan Pérez" },
+{ id: 2, nombre: "Ana García" },
+{ id: 3, nombre: "Luis Fernández" }
+]
+Requisitos:
+1. Muestra el resultado en consola utilizando .then() y maneja el error con .catch().
+2. Muestra un mensaje en la consola indicando que la consulta está en proceso antes de que se resuelva la promesa.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <h1>Obtener usuarios</h1>
+    <button id="obtener">Obtener usuarios</button>
+    <p id="mensaje"></p>
+    <script>
+        function obtenerUsuarios() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (Math.random() < 0.3) {
+                        reject("Error al obtener los usuarios");
+                    } else {
+                        resolve([
+                            { id: 1, nombre: "Juan Pérez" },
+                            { id: 2, nombre: "Ana García" },
+                            { id: 3, nombre: "Luis Fernández" }
+                        ]);
+                    }
+                }, 2000);
+            });
+        }
+
+        document.getElementById('obtener').addEventListener('click', () => {
+            const mensaje = document.getElementById('mensaje');
+            mensaje.textContent = "Obteniendo usuarios...";
+            obtenerUsuarios()
+                .then(usuarios => {
+                    mensaje.textContent = "Usuarios obtenidos:";
+                    usuarios.forEach(usuario => {
+                        const p = document.createElement('p');
+                        p.textContent = `ID: ${usuario.id}, Nombre: ${usuario.nombre}`;
+                        document.body.appendChild(p);
+                    });
+                })
+                .catch(error => {
+                    mensaje.textContent = error;
+                });
+        });
+    </script>
+</body>
+</html>

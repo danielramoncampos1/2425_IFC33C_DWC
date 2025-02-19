@@ -1,0 +1,41 @@
+<!--  
+Desarrolla una función que utilice fetch para obtener información de los usuarios desde https://jsonplaceholder.typicode.com/users. Luego, muestra en la consola el nombre y correo de cada usuario.
+Requisitos:
+1. Muestra el nombre y correo de cada usuario en la consola.
+2. Si la solicitud falla, muestra un mensaje de error indicando que no se pudo obtener la información.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h1>Informacion de usuarios</h1>
+    <button id="cargar">Mostrar</button>
+    <p id="mensaje"></p>
+    <script>
+        document.getElementById('cargar').addEventListener('click', () => {
+            const mensaje = document.getElementById('mensaje');
+            mensaje.textContent = "Cargando Usuarios...";
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al cargar los usuarios');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    mensaje.textContent = "Para ver los usuarios, revisa la consola";
+                    data.forEach(usuario => {
+                        console.log(`Nombre: ${usuario.name}, Correo: ${usuario.email}`);
+                    });
+                })
+                .catch(error => {
+                    mensaje.textContent = error;
+                });
+        });
+    </script>
+</body>
+</html>

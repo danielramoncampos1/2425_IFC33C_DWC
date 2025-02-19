@@ -1,0 +1,39 @@
+<!--
+Realiza una solicitud fetch a una URL inexistente (https://jsonplaceholder.typicode.com/invalid-url). Captura el error y muestra un mensaje personalizado que indique que la página no fue encontrada.
+Requisitos:
+1. Detecta el error HTTP y muestra un mensaje de "Página no encontrada".
+2. Asegúrate de que la aplicación no se detenga al ocurrir el error.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <h1>Encontrar página</h1>
+    <button id="buscar">buscar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        document.getElementById('buscar').addEventListener('click', () => {
+            const mensaje = document.getElementById('mensaje');
+
+            fetch('https://jsonplaceholder.typicode.com/invalid-url')
+                .then(res => {
+                    if (!res.ok) {
+                        mensaje.textContent = "Página no encontrada";
+                        throw new Error("Página no encontrada");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    console.log("Datos recibidos:", data);
+                })
+                .catch(error => {
+                    console.error(error.message);
+                });
+        });
+    </script>
+</body>
+</html>

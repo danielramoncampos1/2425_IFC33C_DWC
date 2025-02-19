@@ -1,0 +1,51 @@
+<!--  
+Enunciado: Estás desarrollando una aplicación de mensajería. Necesitas enviar mensajes a varios usuarios al mismo tiempo. Crea una función enviarMensaje que acepte el nombre del usuario y devuelva una promesa que se resuelva en 2 segundos con un mensaje de confirmación.
+enviarMensaje("Juan Pérez")
+// Resultado esperado después de 2 segundos:
+// "Mensaje enviado a Juan Pérez"
+Luego, utiliza Promise.all para enviar mensajes a una lista de usuarios al mismo tiempo. Si uno de los mensajes falla (simula un fallo aleatorio), la promesa principal debe ser rechazada.
+Requisitos:
+1. Implementa la función para varios usuarios: ["Juan", "Ana", "Luis", "María"].
+2. Si todos los mensajes se envían correctamente, muestra una lista con las confirmaciones.
+3. Si al menos uno falla, captura el error y muestra qué mensaje falló.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <h1>Enviar mensajes</h1>
+    <button id="enviar">Enviar mensajes</button>
+    <p id="mensaje"></p>
+    <script>
+        function enviarMensaje(usuario) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (Math.random() < 0.9) {
+                        resolve(`Mensaje enviado a ${usuario}`);
+                    } else {
+                        reject(`Error al enviar mensaje a ${usuario}`);
+                    }
+                }, 2000);
+            });
+        }
+
+        document.getElementById('enviar').addEventListener('click', () => {
+            const usuarios = ["Juan", "Ana", "Luis", "María"];
+            const promesas = usuarios.map(usuario => enviarMensaje(usuario));
+            const mensaje = document.getElementById('mensaje')
+            mensaje.textContent = "Enviando mensaje...";
+            Promise.all(promesas)
+                .then(resultados => {
+                    mensaje.innerHTML = resultados.join('<br>');
+                })
+                .catch(error => {
+                    mensaje.innerHTML = error;
+                });
+        });
+    </script>
+</body>
+</html>

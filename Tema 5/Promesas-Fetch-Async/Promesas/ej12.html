@@ -1,0 +1,40 @@
+<!--  
+Enunciado: Estás desarrollando una galería de imágenes para una página web. Crea una función cargarImagen que acepte el nombre de una imagen y devuelva una promesa que simule la carga de la imagen con un tiempo aleatorio entre 1 y 5 segundos.
+Utiliza Promise.race para mostrar la primera imagen que se cargue correctamente.
+Requisitos:
+1. Implementa la función para las imágenes ["foto1.jpg", "foto2.jpg", "foto3.jpg"].
+2. Muestra en la consola cuál fue la primera imagen que se cargó.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 12</title>
+</head>
+<body>
+    <h1>Cargar imágenes</h1>
+    <button id="cargar">Cargar imágenes</button>
+    <p id="mensaje"></p>
+    <script>
+        function cargarImagen(imagen) {
+            return new Promise((resolve, reject) => {
+                const tiempo = Math.floor(Math.random() * 5) + 1;
+                setTimeout(() => {
+                    resolve(imagen);
+                }, tiempo * 1000);
+            });
+        }
+
+        document.getElementById('cargar').addEventListener('click', () => {
+            const imagenes = ["foto1.jpg", "foto2.jpg", "foto3.jpg"];
+            const promesas = imagenes.map(imagen => cargarImagen(imagen));
+            const mensaje = document.getElementById('mensaje');
+            mensaje.textContent = "Cargando imagen...";
+            Promise.race(promesas)
+                .then(imagen => {
+                    mensaje.textContent = `Primera imagen cargada: ${imagen}`;
+                });
+        });
+    </script>
+</body>
+</html>

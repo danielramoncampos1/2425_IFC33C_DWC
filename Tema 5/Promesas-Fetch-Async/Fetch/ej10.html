@@ -1,0 +1,42 @@
+<!--
+Ejercicio 10: Renderizado Dinámico de Datos con fetch
+Enunciado: Crea una aplicación que realice una solicitud fetch a https://jsonplaceholder.typicode.com/albums para obtener una lista de álbumes. Luego, muestra los títulos de los primeros 10 álbumes en una lista HTML (<ul>).
+Requisitos:
+1. Inserta los títulos en el DOM dentro de una lista desordenada (<ul>).
+2. Si hay un error en la solicitud, muestra un mensaje de error en la página.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    <h1>Álbumes</h1>
+    <ul id="albums"></ul>
+    <p id="mensaje"></p>
+
+    <script>
+        const albums = document.getElementById('albums');
+        const mensaje = document.getElementById('mensaje');
+
+        fetch('https://jsonplaceholder.typicode.com/albums')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                data.slice(0, 10).forEach(album => {
+                    const li = document.createElement('li');
+                    li.textContent = album.title;
+                    albums.appendChild(li);
+                });
+            })
+            .catch(error => {
+                mensaje.textContent = `Hubo un problema con la solicitud: ${error.message}`;
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!--
+Realiza una solicitud fetch para eliminar una publicación con ID 1 en https://jsonplaceholder.typicode.com/posts/1.
+Requisitos:
+1. Utiliza el método DELETE para eliminar la publicación.
+2. Muestra un mensaje en la consola confirmando que la publicación ha sido eliminada.
+3. Si la solicitud falla, muestra un mensaje adecuado en la consola.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <h1>Eliminar publicación</h1>
+    <button id="eliminar">Eliminar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        document.getElementById('eliminar').addEventListener('click', () => {
+            const mensaje = document.getElementById('mensaje');
+
+            fetch('https://jsonplaceholder.typicode.com/posts/1', {
+                method: 'DELETE'
+            })
+                .then(res => {
+                    if (res.ok) {
+                        mensaje.textContent = "La publicación ha sido eliminada.";
+                    } else {
+                        throw new Error("No se pudo eliminar la publicación.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al eliminar la publicación:', error);
+                });
+        });
+    </script>
+</body>
+</html>

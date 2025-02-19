@@ -1,0 +1,79 @@
+<!--
+Objetivo: Crear una página que obtenga datos desde una API pública utilizando fetch y los muestre en una tabla.
+Descripción:
+1. Utiliza la API pública de JSONPlaceholder: https://jsonplaceholder.typicode.com/posts.
+2. La página debe tener una tabla con tres columnas: ID, Título y Contenido.
+3. Realiza una petición GET para obtener los datos de las publicaciones.
+4. Muestra únicamente las 10 primeras publicaciones en la tabla.
+5. Maneja posibles errores en la petición, como fallos de red o respuestas con errores HTTP (404, 500, etc.).
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Publicaciones</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Contenido</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-body">
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("https://jsonplaceholder.typicode.com/posts")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tablaBody = document.getElementById("tabla-body");
+                    data.slice(0, 10).forEach(post => {
+                        const fila = document.createElement("tr");
+                        const idCell = document.createElement("td");
+                        idCell.textContent = post.id;
+                        fila.appendChild(idCell);
+
+                        const titleCell = document.createElement("td");
+                        titleCell.textContent = post.title;
+                        fila.appendChild(titleCell);
+
+                        const bodyCell = document.createElement("td");
+                        bodyCell.textContent = post.body;
+                        fila.appendChild(bodyCell);
+                        tablaBody.appendChild(fila);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al obtener los datos:", error);
+                    document.body.innerHTML += `<p>Error al cargar las publicaciones. Inténtalo de nuevo más tarde.</p>`;
+                });
+        });
+    </script>
+</body>
+</html>
